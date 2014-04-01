@@ -1,0 +1,15 @@
+name: DreamSpeed
+main: main.java.com.thedreamsanctuary.dreamspeed.DreamSpeed
+version: 1.0.0-SNAPSHOT
+authors: [Ajcool1050]
+description: DreamSpeed, Tell the speed of your dreams.
+
+commands:
+    dreamspeed:
+        aliases: dspeed
+        permission: dreamspeed.command.use
+        description: Tell the speed of your dreams.
+ 
+permissions:
+    deramspeed.command.use:
+        default: false

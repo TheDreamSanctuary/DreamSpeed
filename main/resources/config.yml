@@ -1,0 +1,11 @@
+#Interval (in seconds) that info is updated
+update_interval: 2
+
+#Change what is displayed on gui
+display_tps: true
+display_cpu: true
+display_mem: true
+
+#Will display per world info false by default
+advanced_mode: false
+
