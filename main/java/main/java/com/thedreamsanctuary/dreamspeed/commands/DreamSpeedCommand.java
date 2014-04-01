@@ -7,9 +7,6 @@
 package main.java.com.thedreamsanctuary.dreamspeed.commands;
 
 import main.java.com.thedreamsanctuary.dreamspeed.DreamSpeed;
-import static main.java.com.thedreamsanctuary.dreamspeed.DreamSpeed.veiwing;
-import main.java.com.thedreamsanctuary.dreamspeed.listener.DSListener;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -22,35 +19,33 @@ import org.bukkit.entity.Player;
 public class DreamSpeedCommand implements CommandExecutor 
 {
 
-    final DreamSpeed ds;
-    public DreamSpeedCommand(DreamSpeed ds)
-    {
-        this.ds = ds;
+    private final DreamSpeed plugin;
+
+    public DreamSpeedCommand(DreamSpeed plugin) {
+        this.plugin = plugin;
     }
-    
+
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String string, String[] args)
-    {
-        if (sender instanceof Player)
-        {
-            Player player = (Player) sender;
-            
-            if (player.hasPermission("dreamspeed.command.use"))
-            { 
-                if (!veiwing.contains(player.getName()))
-                {
-                    veiwing.add(player.getName());
-                    DSListener.enableGUI(player);
-                }
-                else
-                {
-                    veiwing.remove(player.getName());
-                    DSListener.disableGUI(player);
-                }
+    public boolean onCommand(CommandSender sender, Command comand, String string, String[] args){
+        if(comand.getName().equalsIgnoreCase("dreamspeed")){
+            if(!(sender instanceof Player)){
+                sender.sendMessage("Player only command!");
+                return true;
             }
-            else player.sendMessage(ChatColor.GOLD + "You are not able to execute that command.");
+            String playerName = sender.getName();
+            Player player = (Player) sender;
+            if(plugin.getViewing().contains(playerName)){
+                plugin.removeViewer(playerName);
+                plugin.getDsListener().disableGUI(player);
+            }
+            else{
+                plugin.addViewer(playerName);
+                plugin.getDsListener().enableGUI(player);
+            }
+
+            return true;
         }
-        else sender.sendMessage("Must be and ingame player to execute command.");
         return false;
-    }  
+    }
+
 }

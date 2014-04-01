@@ -7,9 +7,9 @@ description: DreamSpeed, Tell the speed of your dreams.
 commands:
     dreamspeed:
         aliases: dspeed
-        permission: dreamspeed.command.use
-        description: Tell the speed of your dreams.
+        permission: dreamspeed.use
+        description: View live updating server stats
  
 permissions:
-    deramspeed.command.use:
+    deramspeed.use:
         default: false
