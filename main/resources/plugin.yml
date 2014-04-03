@@ -11,5 +11,5 @@ commands:
         description: View live updating server stats
  
 permissions:
-    deramspeed.use:
+    dreamspeed.use:
         default: false
